@@ -66,5 +66,5 @@ public class Animal {
 	public void setMuerto(boolean muerto) {
 		this.muerto = muerto;
 	}
-
+	
 }

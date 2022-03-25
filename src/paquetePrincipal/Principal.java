@@ -1,5 +1,6 @@
 package paquetePrincipal;
 
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class Principal {
@@ -172,5 +173,22 @@ public class Principal {
 		}
 		intro();
 	}
-
+	public static void adquirirCerdo() {
+		for (int i = 0; i < animales.length; i++) {
+			if(animales[i] instanceof Cerdo && animales[i].isMuerto()) {
+				System.out.println("Nombre:");
+				String nombre=sc.nextLine();
+				System.out.println("Peso:");
+				double peso=decimalNoNegativo();
+				System.out.println("Edad:");
+				int edad=enteroNoNegativo();
+				System.out.println("Color de piel:");
+				String colorPiel=sc.nextLine();
+				animales[i]=new Cerdo(nombre, peso, edad, colorPiel);
+				return;
+			}
+		}
+		System.out.println("no hay huecos para los cerdos nuevos");
+	}
+	
 }
