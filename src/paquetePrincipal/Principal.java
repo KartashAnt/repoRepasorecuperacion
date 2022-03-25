@@ -40,7 +40,13 @@ public class Principal {
 				listaAnimales();
 				break;
 			case 2:
-				mostrartipo();;
+				mostrarTipo();
+				break;
+			case 3:
+				sumarAnyo();
+				break;
+			case 4:
+				cambiarPeso();
 				break;
 			default:
 				break;
@@ -52,7 +58,25 @@ public class Principal {
 		boolean listo=false;
 		while (!listo) {
 			try {
-				num=Integer.valueOf(sc.nextLine());
+				num=Integer.parseInt(sc.nextLine());
+				if(num>=0) {
+					listo=true;
+				}
+				else {
+					System.out.println("No aceptamos numeros negativos");
+				}
+			} catch (NumberFormatException e) {
+				System.out.println("Formato de entrada invalido");
+			}
+		}
+		return num;
+	}
+	public static double decimalNoNegativo() {
+		double num=0;
+		boolean listo=false;
+		while (!listo) {
+			try {
+				num=Double.parseDouble(sc.nextLine());
 				if(num>=0) {
 					listo=true;
 				}
@@ -68,7 +92,7 @@ public class Principal {
 	public static void listaAnimales() {
 		System.out.println("LISTADO DE ANIMALES");
 		for (int i = 0; i < animales.length; i++) {
-			if(animales[i]!=null) {
+			if(!animales[i].isMuerto()) {
 				System.out.println((Animal)animales[i]);
 			}
 		}
@@ -78,13 +102,14 @@ public class Principal {
 		System.out.println("\nPulse intro para volver al MENU PRINCIPAL");
 		sc.nextLine();
 	}
-	public static void mostrartipo() {
+	public static void mostrarTipo() {
 		System.out.println("MOSTRAR TIPO DE ANIMAL");
 		for (int i = 0; i < animales.length; i++) {
-			if(animales[i]!=null) {
+			if(!animales[i].isMuerto()) {
 				System.out.println((i+1)+".- " +animales[i].getNombre());
 			}
 		}
+		System.out.println("Elija el animal:");
 		int entrada=enteroNoNegativo()-1;
 		if(entrada==-1 || entrada >=animales.length) {
 			System.out.println("Entrada fuera de la lista");
@@ -92,5 +117,60 @@ public class Principal {
 		else {
 			System.out.println(animales[entrada].getNombre() + " es " + animales[entrada].getClass().getSimpleName().toLowerCase());
 		}
+		intro();
 	}
+	public static void sumarAnyo() {
+		System.out.println("SUMAR ANYO A ANIMAL");
+		for (int i = 0; i < animales.length; i++) {
+			if(!animales[i].isMuerto()) {
+				System.out.println((i+1)+".- " +animales[i].getNombre() + " edad: " + animales[i].getEdad() );
+			}
+		}
+		System.out.println("Elija el animal:");
+		int entrada=enteroNoNegativo()-1;
+		if(entrada==-1 || entrada >=animales.length) {
+			System.out.println("Entrada fuera de la lista");
+		}
+		else {
+			System.out.println(animales[entrada].getNombre() + " ahora tiene " + animales[entrada].sumarAnyo() + " anyos");
+		}
+		intro();
+	}
+	public static void cambiarPeso() {
+		System.out.println("CAMBIAR PESO A UN ANIMAL");
+		for (int i = 0; i < animales.length; i++) {
+			if(!animales[i].isMuerto()) {
+				System.out.println((i+1)+".- " +animales[i].getNombre() + " peso: " + animales[i].getPeso() + " Kg" );
+			}
+		}
+		System.out.println("Elija el animal");
+		int entrada=enteroNoNegativo()-1;
+		if(entrada==-1 || entrada >=animales.length) {
+			System.out.println("Entrada fuera de la lista");
+		}
+		else {
+			System.out.println("Peso nuevo?");
+			double peso=decimalNoNegativo();
+			animales[entrada].cambiarPeso(peso);
+		}
+		intro();
+	}
+	public static void marcarMuerto() {
+		System.out.println("MARCAR ANIMAL COMO MUERTO");
+		for (int i = 0; i < animales.length; i++) {
+			if(!animales[i].isMuerto()) {
+				System.out.println((i+1)+".- " +animales[i].getNombre());
+			}
+		}
+		System.out.println("Elija el animal");
+		int entrada=enteroNoNegativo()-1;
+		if(entrada==-1 || entrada >=animales.length) {
+			System.out.println("Entrada fuera de la lista");
+		}
+		else {
+			animales[entrada].marcarMuerto();
+		}
+		intro();
+	}
+
 }
