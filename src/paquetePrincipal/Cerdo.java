@@ -11,7 +11,13 @@ public class Cerdo extends Animal {
 	public Cerdo() {
 		super();
 	}
-
+	@Override
+	public String toString() {
+		return "cerdo: " + super.getNombre() + " " + super.getPeso() + " Kg " + super.getEdad() + " anyos color de piel: " + colorPiel;
+	}
+	public String superToString() {
+		return super.toString();
+	}
 	public String getColorPiel() {
 		return colorPiel;
 	}

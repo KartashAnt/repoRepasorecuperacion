@@ -49,6 +49,16 @@ public class Principal {
 			case 4:
 				cambiarPeso();
 				break;
+			case 5:
+				marcarMuerto();
+				break;
+			case 6:
+				adquirirCerdo();
+				break;
+			case 7:
+				listaCompleta();
+				break;
+				
 			default:
 				break;
 			}
@@ -94,7 +104,7 @@ public class Principal {
 		System.out.println("LISTADO DE ANIMALES");
 		for (int i = 0; i < animales.length; i++) {
 			if(!animales[i].isMuerto()) {
-				System.out.println((Animal)animales[i]);
+				System.out.println(animales[i].superToString());
 			}
 		}
 		intro();
@@ -112,7 +122,7 @@ public class Principal {
 		}
 		System.out.println("Elija el animal:");
 		int entrada=enteroNoNegativo()-1;
-		if(entrada==-1 || entrada >=animales.length) {
+		if(entrada==-1 || entrada >=animales.length || animales[entrada].isMuerto()) {
 			System.out.println("Entrada fuera de la lista");
 		}
 		else {
@@ -129,7 +139,7 @@ public class Principal {
 		}
 		System.out.println("Elija el animal:");
 		int entrada=enteroNoNegativo()-1;
-		if(entrada==-1 || entrada >=animales.length) {
+		if(entrada==-1 || entrada >=animales.length || animales[entrada].isMuerto()) {
 			System.out.println("Entrada fuera de la lista");
 		}
 		else {
@@ -146,7 +156,7 @@ public class Principal {
 		}
 		System.out.println("Elija el animal");
 		int entrada=enteroNoNegativo()-1;
-		if(entrada==-1 || entrada >=animales.length) {
+		if(entrada==-1 || entrada >=animales.length|| animales[entrada].isMuerto()) {
 			System.out.println("Entrada fuera de la lista");
 		}
 		else {
@@ -165,7 +175,7 @@ public class Principal {
 		}
 		System.out.println("Elija el animal");
 		int entrada=enteroNoNegativo()-1;
-		if(entrada==-1 || entrada >=animales.length) {
+		if(entrada==-1 || entrada >=animales.length|| animales[entrada].isMuerto()) {
 			System.out.println("Entrada fuera de la lista");
 		}
 		else {
@@ -188,7 +198,16 @@ public class Principal {
 				return;
 			}
 		}
-		System.out.println("no hay huecos para los cerdos nuevos");
+		System.out.println("No hay huecos para los cerdos nuevos");
+		intro();
 	}
-	
+	public static void listaCompleta() {
+		System.out.println("LISTADO DE ANIMALES");
+		for (int i = 0; i < animales.length; i++) {
+			if(!animales[i].isMuerto()) {
+				System.out.println(animales[i]);
+			}
+		}
+		intro();
+	}
 }
