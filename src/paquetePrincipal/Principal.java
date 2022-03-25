@@ -39,7 +39,9 @@ public class Principal {
 			case 1:
 				listaAnimales();
 				break;
-
+			case 2:
+				mostrartipo();;
+				break;
 			default:
 				break;
 			}
@@ -75,5 +77,20 @@ public class Principal {
 	public static void intro() {
 		System.out.println("\nPulse intro para volver al MENU PRINCIPAL");
 		sc.nextLine();
+	}
+	public static void mostrartipo() {
+		System.out.println("MOSTRAR TIPO DE ANIMAL");
+		for (int i = 0; i < animales.length; i++) {
+			if(animales[i]!=null) {
+				System.out.println((i+1)+".- " +animales[i].getNombre());
+			}
+		}
+		int entrada=enteroNoNegativo()-1;
+		if(entrada==-1 || entrada >=animales.length) {
+			System.out.println("Entrada fuera de la lista");
+		}
+		else {
+			System.out.println(animales[entrada].getNombre() + " es " + animales[entrada].getClass().getSimpleName().toLowerCase());
+		}
 	}
 }
