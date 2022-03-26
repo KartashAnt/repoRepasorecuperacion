@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Principal {
 	static Animal[] animales;
 	static Scanner sc=new Scanner(System.in);
+	static double litrosLeche=0;
 	public static void main(String[] args) {
 		animales=inicializar();
 		menuPrincipal();
@@ -209,5 +210,8 @@ public class Principal {
 			}
 		}
 		intro();
+	}
+	public static void obtenerLeche() {
+		
 	}
 }
