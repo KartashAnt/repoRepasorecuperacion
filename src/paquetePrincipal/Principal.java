@@ -386,7 +386,7 @@ public class Principal {
 	//Valido un entrada de animal
 	public static boolean validarEntradaAnimal(int entrada) {
 		//Invalido
-		if (entrada >0 || entrada >= animales.length || animales[entrada].isMuerto()) {
+		if (entrada <0 || entrada >= animales.length || animales[entrada].isMuerto()) {
 			System.out.println("Entrada fuera de la lista");
 			return false;
 		} 
