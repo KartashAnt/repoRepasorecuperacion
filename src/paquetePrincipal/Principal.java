@@ -6,6 +6,7 @@ public class Principal {
 	static Animal[] animales;
 	static Scanner sc=new Scanner(System.in);
 	static double litrosLeche=0;
+	static double gananciasAcumulados=0;
 	public static void main(String[] args) {
 		animales=inicializar();
 		menuPrincipal();
@@ -60,6 +61,9 @@ public class Principal {
 				break;
 			case 8:
 				obtenerLeche();
+				break;
+			case 9:
+				venderLeche();
 				break;
 			default:
 				break;
@@ -220,6 +224,24 @@ public class Principal {
 				litrosLeche+=leche;
 			}
 		}
+		litrosLeche=Math.round(litrosLeche*100.0)/100.0;
 		System.out.println("Total leche: " + litrosLeche);
+	}
+	public static void venderLeche() {
+		System.out.println("Total leche: " + litrosLeche + " l");
+		System.out.println("\n Cuanta se quiere  vender?");
+		double leche=decimalNoNegativo();
+		if(leche>litrosLeche) {
+			System.out.println("No hay tanta leche");
+		}
+		else {
+			litrosLeche-=leche;
+			litrosLeche=Math.round(litrosLeche*100.0)/100.0;
+			double ganancias=Math.round((leche*0.5)*100.0)/100.0;
+			System.out.println("Ganancias por esta venta: " + ganancias);
+			gananciasAcumulados+=ganancias;
+			gananciasAcumulados=Math.round(gananciasAcumulados*100.0)/100.0;
+			System.out.println("Ganancias acumuladas: " + gananciasAcumulados);
+		}
 	}
 }
