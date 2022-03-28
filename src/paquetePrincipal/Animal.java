@@ -1,5 +1,6 @@
 package paquetePrincipal;
 
+//Clase para definir conceptos generales para todos los animales
 public class Animal {
 	
 	private String nombre;
@@ -18,7 +19,7 @@ public class Animal {
 		
 	}
 	
-	//Constructor vacío
+	//Constructor vacï¿½o
 	public Animal() {
 		
 		super();
@@ -40,7 +41,7 @@ public class Animal {
 		
 	}
 
-	//Metodo para añadir un año al animal y demostrar su edad actualizada
+	//Metodo para aï¿½adir un aï¿½o al animal y demostrar su edad actualizada
 	public int sumarAnyo() {
 		
 		this.edad++;
@@ -75,7 +76,7 @@ public class Animal {
 		
 	}
 	
-	//setters y getters
+	//Setters y getters
 	public String getNombre() {
 		return nombre;
 	}
