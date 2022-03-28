@@ -1,6 +1,5 @@
 package paquetePrincipal;
 
-import java.util.Iterator;
 import java.util.Scanner;
 
 public class Principal {
@@ -59,7 +58,9 @@ public class Principal {
 			case 7:
 				listaCompleta();
 				break;
-				
+			case 8:
+				obtenerLeche();
+				break;
 			default:
 				break;
 			}
@@ -179,7 +180,7 @@ public class Principal {
 		if(entrada==-1 || entrada >=animales.length|| animales[entrada].isMuerto()) {
 			System.out.println("Entrada fuera de la lista");
 		}
-		else {
+		else {																																																					
 			animales[entrada].marcarMuerto();
 		}
 		intro();
@@ -212,6 +213,13 @@ public class Principal {
 		intro();
 	}
 	public static void obtenerLeche() {
-		
+		for(Animal animal: animales) {
+			if(animal instanceof Vaca && ((Vaca)animal).isLeche()) {
+				double leche=((Vaca)animal).producirLeche();
+				System.out.println(animal.getNombre() + ": " + leche + " litros");
+				litrosLeche+=leche;
+			}
+		}
+		System.out.println("Total leche: " + litrosLeche);
 	}
 }
